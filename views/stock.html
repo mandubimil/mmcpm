@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+	<link rel="stylesheet" href="/public/js/webix/codebase/skins/compact.css" type="text/css" media="screen" charset="utf-8">
+    <style>@font-face{font-family: 'D2Coding';src: url(/public/js/D2Coding.woff) format('woff');}
+    body, table, div, p, h1, h2, h3, h4, h5, h6, pre {font-family:'D2Coding';}</style>
+    		
+    <script src="/public/js/webix/codebase/webix.js" type="text/javascript"  charset="utf-8"></script>
+    <script src="/public/app_js/stock.js" type="text/javascript"  charset="utf-8"></script>
+    <script src="/public/app_js/common.js" type="text/javascript"  charset="utf-8"></script>
+	
+		<script type="text/javascript">
+			webix.require.disabled = true;
+			webix.codebase = "/javascripts/";
+		</script>	
+	
+		<script src="/public/js/nicedit/webix_nicedit.js"></script>	
+    <script src="/public/js/nicedit/nicEdit.js"></script>	
+
+		<title>mandu memo</title>		
+	</head>
+<body>
+
+ 
+<script type="text/javascript" charset="utf-8">
+
+webix.ui({view:"popup",	id:"pop_2", head:"Submenu", width:150,
+    body:{view:"list", id:"list_3", data:[
+            {id:"1", name:"Coffeebar", location:"매도(판매) 주문"},
+        ],
+        datatype:"json", template:"#location#",	autoheight:true, select:true
+    }
+});
+    
+webix.ready(function()
+{  
+	var main_view =
+	{
+        rows:
+        [
+            { view:"template", id:"title1", template:"mandu", height:20},
+            { view:"datatable", id:"grid_1", resizeColumn:true, autoConfig:true},
+            { view:"resizer" },
+            { view:"datatable", id:"grid_2", resizeColumn:true, autoConfig:true},
+            {
+                cols:
+                [
+                    {
+                        view:"richselect", id:'combobox_1', width:80, value:'demo', options:
+                        [ 
+                            { id:'hts', value:"hts" }, 
+                            { id:'demo', value:"demo" }
+                        ]
+                    },                    
+                    {width:10 },
+                    {
+                        view:"radio", id:"radiobox_1", align:"center", value:'2', height:50, align:"center", options:
+                        [
+                            { value:"보유", id:'1' },
+                            { value:"매매", id:'2' },
+                            { value:"주문", id:'3' },
+                        ]
+                    },
+                    { view:"button", value:"가자", click:"gogo();", width:50, align:"center"},
+                ]
+            },
+            { view:"template", id:"tms2", template:"mandu", height:20},
+        ]
+    };	
+    
+    webix.ui(main_view);
+    webix.Touch.limit(true);
+
+    $$("combobox_1").attachEvent("onChange", function(newv, oldv){
+        load_title();
+    });
+
+
+    var id_temp = '';
+    var id_name = '';
+    $$("grid_1").attachEvent("onItemClick", function(id, e, node){
+        var grid = $$("grid_1")
+        for (i=0 ; i<grid.count() ; i++)
+        {    
+            if (grid.getItem(id).종목명 == $$("grid_2").getItem($$("grid_2").getIdByIndex(i)).종목명)
+            {
+                $$("grid_2").select($$("grid_2").getIdByIndex(i));
+            }
+        }
+    });  
+
+    $$("grid_2").attachEvent("onItemClick", function(id, e, node){
+        var grid = $$("grid_2")
+        for (i=0 ; i<grid.count() ; i++)
+        {    
+            if (grid.getItem(id).종목명 == $$("grid_1").getItem($$("grid_1").getIdByIndex(i)).종목명)
+            {
+                $$("grid_1").select($$("grid_1").getIdByIndex(i));
+            }
+        }
+    });  
+
+
+    $$("grid_1").attachEvent("onItemDblClick", function(id, e, node){
+        if ($$('radiobox_1').getValue() === '1')
+        {
+            var grid = $$("grid_1")
+            var sg = $$("grid_1").getItem(id); 
+            open_ju_and_get_hoga($$('combobox_1').getText(), node, '매도(판매)', sg.단축코드, sg.종목명, sg.매도가능, sg.현재가);
+        }
+    });  
+
+    start_page();
+});
+
+
+
+
+</script>
+
+</body>
+</html>
+
+<form name="f1">
+<input type="hidden" name="sd"/>
+<input type="hidden" name="ed"/>
+<input type="hidden" name="jong"/>
+<input type="hidden" name="jname"/>
+<input type="hidden" name="pr_id"/>
+<input type="hidden" name="bigo"/>
+</form>
+

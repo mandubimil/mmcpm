@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+	<link rel="stylesheet" href="/public/js/webix/codebase/skins/compact.css" type="text/css" media="screen" charset="utf-8">
+    <style>@font-face{font-family: 'D2Coding';src: url(/public/js/D2Coding.woff) format('woff');}
+    body, table, div, p, h1, h2, h3, h4, h5, h6, pre {font-family:'D2Coding';}</style>
+    		
+    <script src="/public/js/webix/codebase/webix.js" type="text/javascript"  charset="utf-8"></script>
+    <script src="/public/app_js/memo.js" type="text/javascript"  charset="utf-8"></script>
+    <script src="/public/app_js/common.js" type="text/javascript"  charset="utf-8"></script>
+	
+		<script type="text/javascript">
+			webix.require.disabled = true;
+			webix.codebase = "/javascripts/";
+		</script>	
+	
+		<script src="/public/js/nicedit/webix_nicedit.js"></script>	
+    <script src="/public/js/nicedit/nicEdit.js"></script>	
+
+		<title>mandu memo</title>		
+	</head>
+<body>
+  		
+<script type="text/javascript" charset="utf-8">
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+var pop_menu = 
+{ view:"popup",	id:"popup_menu", head:"Submenu", width:150,body:
+    {
+        type:"space",
+        rows:
+        [
+            {
+                view:"list", id:"list_menu", data:[ 
+                                                    {id:"3", name:"open", location:"닫기"},
+                                                    {id:"1", name:"open", location:"새창열기"},
+                                                    {id:"2", name:"open", location:"열기"},
+                                        ],
+                datatype:"json", template:"#location#",	autoheight:true, select:true
+            }
+        ]
+    }
+};
+
+webix.ready(function()
+{  
+  webix.ui(pop_menu);
+  
+  var main_view =
+  {
+    cols:
+		[
+      {
+        rows:
+        [
+          { view:"nic-editor", id:"contents_1", config:{buttonList : ['fontSize','bold','italic','underline']} },
+          { view:"resizer" },
+          { view:"tree", id:"tree_1", activeTitle:true, select:"true", scheme:{$group:"대분류", sort:"제목"} },
+          { view:"toolbar", id:"mybar1", elements:
+            [
+              {view:"button", align:"left", label: '새문서', autowidth:true, click:"new_memo"},
+              {view:"text", id: "text_search_memo"},
+            ]
+          },
+        ]
+      }
+    ]
+  };
+
+  webix.ui(main_view);
+  webix.Touch.limit(true); 
+
+  $$("text_search_memo").attachEvent("onTimedKeyPress",function()
+  {
+		$$("tree_1").filter("#value#",this.getValue());
+  })
+
+  var temp_id = '';
+  $$('tree_1').attachEvent("onItemClick", function (id, e, node)
+  {    
+    temp_id = id;
+    $$('popup_menu').show(node);  
+  });
+
+  $$("list_menu").attachEvent("onItemClick", function(id, e, node){
+        if      (id === '1'){read_memo(temp_id)}
+        else if (id === '2'){$$("popup_menu").hide(); read_memo_this(temp_id);}
+        else if (id === '3'){$$('popup_menu').hide()}
+    });  
+
+  start_page();
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+</script>
+
+<form name="f">
+  <input type="hidden" name="select_id">
+ </form>
+  
+</body>
+</html>
+

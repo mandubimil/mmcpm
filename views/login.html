@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+    <link rel="stylesheet" href="/public/js/webix/codebase/skins/compact.css" type="text/css" media="screen" charset="utf-8">
+    <style>@font-face{font-family: 'D2Coding';src: url(/public/js/D2Coding.woff) format('woff');}
+    body, table, div, p, h1, h2, h3, h4, h5, h6, pre {font-family:'D2Coding';}</style>
+    		
+    <script src="/public/js/webix/codebase/webix.js" type="text/javascript"  charset="utf-8"></script>
+  
+    <script language="JavaScript">
+      window.setTimeout("location.reload()", 30000);
+    </script>
+
+  	<title>mandu memo</title>		
+	</head>
+  
+<body>
+<script type="text/javascript" charset="utf-8">
+
+webix.ready(function(){  
+  webix.ui({
+
+	type:"space", rows:[
+      { type:"header", template:"얌얌"},
+			{ align:"center", body:{ view:"text", label:"사용자", value:"mandu", width:300, id:"user"}},
+			{ align:"center", body:{ view:"text", label:"비번", value:"", type:'password', width:300, id:"passwd"}},
+      { align:"center", view:"button", label: 'memo', click:"gogo_mmcp", width:300 }
+		]
+	
+	});	
+  
+  $$("passwd").attachEvent("onKeyPress", function(code, e)
+  {
+    if (code === 13)
+        gogo_mmcp();  
+  });  
+  
+  $$("passwd").focus();
+});
+
+
+wid = 0;
+function gogo_mmcp()
+{
+    document.f.action = '/gogo';
+    document.f.user.value = $$('user').getValue();
+    document.f.passwd.value = $$('passwd').getValue();
+    document.f.method = 'POST';
+    document.f.submit();
+}
+
+
+
+</script>
+
+
+
+<form name="f">
+<input type="hidden" name="user">
+<input type="hidden" name="passwd">
+<input type="hidden" name="win">
+</form>
+
+</body>
+</html>

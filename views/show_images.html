@@ -1,0 +1,43 @@
+<style>
+    body{
+      background-color: black;
+    }
+ </style>
+
+<body>
+
+    
+<center>
+<img src='/public/images/{{index . "name"}}' width="100%"/>
+</center>
+
+
+<script type="text/javascript">
+
+    function resize(image)
+    {
+        var differenceHeight = document.body.clientHeight - image.clientHeight;
+        var differenceWidth  = document.body.clientWidth  - image.clientWidth;
+        if (differenceHeight < 0) differenceHeight = differenceHeight * -1;
+        if (differenceWidth  < 0) differenceWidth  = differenceWidth * -1;
+
+        if (differenceHeight > differenceWidth)
+        {
+            image.style['height'] = document.body.clientHeight + 'px';
+        }
+        else
+        {
+            image.style['width'] = document.body.clientWidth + 'px';
+        }
+
+        // Optional: remove margins or compensate for offset.
+        image.style['margin'] = 0;
+        document.body.style['margin'] = 0;
+    }
+
+</script>
+
+<script language="JavaScript">
+    window.setTimeout("history.go(0);", 5000);
+  </script>
+</body>

@@ -1,0 +1,84 @@
+[
+	{
+		"id": "./public/js/nicedit/demos",
+		"value": "demos",
+		"pathName": "./public/js/nicedit/",
+		"fileName": "demos",
+		"fullName": "./public/js/nicedit/demos",
+		"fType": "dir",
+		"data": [
+			{
+				"id": "./public/js/nicedit/demos/demo01.html",
+				"value": "demo01.html",
+				"pathName": "./public/js/nicedit/demos/",
+				"fileName": "demo01.html",
+				"fullName": "./public/js/nicedit/demos/demo01.html",
+				"fType": "file",
+				"data": null
+			},
+			{
+				"id": "./public/js/nicedit/demos/demo02.html",
+				"value": "demo02.html",
+				"pathName": "./public/js/nicedit/demos/",
+				"fileName": "demo02.html",
+				"fullName": "./public/js/nicedit/demos/demo02.html",
+				"fType": "file",
+				"data": null
+			},
+			{
+				"id": "./public/js/nicedit/demos/demo03.html",
+				"value": "demo03.html",
+				"pathName": "./public/js/nicedit/demos/",
+				"fileName": "demo03.html",
+				"fullName": "./public/js/nicedit/demos/demo03.html",
+				"fType": "file",
+				"data": null
+			},
+			{
+				"id": "./public/js/nicedit/demos/demo04.html",
+				"value": "demo04.html",
+				"pathName": "./public/js/nicedit/demos/",
+				"fileName": "demo04.html",
+				"fullName": "./public/js/nicedit/demos/demo04.html",
+				"fType": "file",
+				"data": null
+			},
+			{
+				"id": "./public/js/nicedit/demos/demo05.html",
+				"value": "demo05.html",
+				"pathName": "./public/js/nicedit/demos/",
+				"fileName": "demo05.html",
+				"fullName": "./public/js/nicedit/demos/demo05.html",
+				"fType": "file",
+				"data": null
+			}
+		]
+	},
+	{
+		"id": "./public/js/nicedit/nicEdit.js",
+		"value": "nicEdit.js",
+		"pathName": "./public/js/nicedit/",
+		"fileName": "nicEdit.js",
+		"fullName": "./public/js/nicedit/nicEdit.js",
+		"fType": "file",
+		"data": null
+	},
+	{
+		"id": "./public/js/nicedit/nicEditorIcons.gif",
+		"value": "nicEditorIcons.gif",
+		"pathName": "./public/js/nicedit/",
+		"fileName": "nicEditorIcons.gif",
+		"fullName": "./public/js/nicedit/nicEditorIcons.gif",
+		"fType": "file",
+		"data": null
+	},
+	{
+		"id": "./public/js/nicedit/webix_nicedit.js",
+		"value": "webix_nicedit.js",
+		"pathName": "./public/js/nicedit/",
+		"fileName": "webix_nicedit.js",
+		"fullName": "./public/js/nicedit/webix_nicedit.js",
+		"fType": "file",
+		"data": null
+	}
+]

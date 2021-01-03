@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+	<link rel="stylesheet" href="/public/js/webix/codebase/skins/compact.css" type="text/css" media="screen" charset="utf-8">
+    <style>@font-face{font-family: 'D2Coding';src: url(/public/js/D2Coding.woff) format('woff');}
+    body, table, div, p, h1, h2, h3, h4, h5, h6, pre {font-family:'D2Coding';}</style>
+    		
+    <script src="/public/js/webix/codebase/webix.js" type="text/javascript"  charset="utf-8"></script>
+    <script src="/public/app_js/stock_exe.js" type="text/javascript"  charset="utf-8"></script>
+    <script src="/public/app_js/common.js" type="text/javascript"  charset="utf-8"></script>
+	
+		<script type="text/javascript">
+			webix.require.disabled = true;
+			webix.codebase = "/javascripts/";
+		</script>	
+	
+		<script src="/public/js/nicedit/webix_nicedit.js"></script>	
+    <script src="/public/js/nicedit/nicEdit.js"></script>	
+
+		<title>mandu memo</title>		
+	</head>
+<body>
+
+ 
+<script type="text/javascript" charset="utf-8">
+
+webix.ui({view:"popup",	id:"pop_2", head:"Submenu", width:150,
+    body:{view:"list", id:"list_3", data:[
+            {id:"1", name:"Coffeebar", location:"매도(판매) 주문"},
+        ],
+        datatype:"json", template:"#location#",	autoheight:true, select:true
+    }
+});
+    
+webix.ready(function()
+{  
+	var main_view =
+	{
+        rows:
+        [
+            { height:20},
+            {
+                cols:
+                [
+                    { view:"text", width:55, id:"text_server"},
+                    {view:"text", id: "text_file"},                    
+                    { view:"text", width:90, id:"text_gubun"},
+                    {view:"button", align:"left", label: '토글', autowidth:true, click:"tg_exe"},
+                ]
+            },
+            { height:20},
+            {view:"datatable", id:"grid_1", resizeColumn:true, autoConfig:true, select:true}
+        ]
+    };	
+    
+    webix.ui(main_view);
+    webix.Touch.limit(true);
+
+    var temp_id = '';
+    $$('grid_1').attachEvent("onItemDblClick", function (id, e, node)
+    {    
+        webix.message(node);
+    });    
+
+    start_page();
+});
+
+
+
+
+</script>
+
+</body>
+</html>
+
+<form name="f1">
+<input type="hidden" name="sd"/>
+<input type="hidden" name="ed"/>
+<input type="hidden" name="jong"/>
+<input type="hidden" name="jname"/>
+<input type="hidden" name="pr_id"/>
+<input type="hidden" name="bigo"/>
+</form>
+
