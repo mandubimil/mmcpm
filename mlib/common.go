@@ -18,7 +18,7 @@ func CheckErr(e error) {
 
 // GetConfig hhh
 func GetConfig() (map[string]interface{}, error) {
-	dat, err := ioutil.ReadFile("./mmcpm.conf")
+	dat, err := ioutil.ReadFile("../mmcpm.conf")
 	CheckErr(err)
 
 	var mmcpConfig map[string]interface{}

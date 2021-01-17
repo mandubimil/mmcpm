@@ -5,22 +5,22 @@
 	<link rel="stylesheet" href="/public/js/webix/codebase/skins/compact.css" type="text/css" media="screen" charset="utf-8">
     <style>@font-face{font-family: 'D2Coding';src: url(/public/js/D2Coding.woff) format('woff');}
     body, table, div, p, h1, h2, h3, h4, h5, h6, pre {font-family:'D2Coding';}</style>
-    		
+
     <script src="/public/js/webix/codebase/webix.js" type="text/javascript"  charset="utf-8"></script>
     <script src="/public/app_js/code.js" type="text/javascript"  charset="utf-8"></script>
     <script src="/public/app_js/common.js" type="text/javascript"  charset="utf-8"></script>
-	
+
     <script type="text/javascript">
         webix.require.disabled = true;
         webix.codebase = "/public/js/";
-    </script>		
+    </script>
 
-  <script src="/public/js/codemirror/webix_codemirror.js"></script>	
-  <script src="/public/js/codemirror/lib/codemirror.js"></script>	
-  <script src="/public/js/codemirror/mode/javascript/javascript.js"></script>		
-  <script src="/public/js/codemirror/mode/python/python.js"></script>		
-  <script src="/public/js/codemirror/mode/sql/sql.js"></script>		
-  <script src="/public/js/codemirror/mode/go/go.js"></script>		
+  <script src="/public/js/codemirror/webix_codemirror.js"></script>
+  <script src="/public/js/codemirror/lib/codemirror.js"></script>
+  <script src="/public/js/codemirror/mode/javascript/javascript.js"></script>
+  <script src="/public/js/codemirror/mode/python/python.js"></script>
+  <script src="/public/js/codemirror/mode/sql/sql.js"></script>
+  <script src="/public/js/codemirror/mode/go/go.js"></script>
 
   <link rel="stylesheet" type="text/css" href="/public/js/codemirror/lib/codemirror.css">
   <link rel="stylesheet" type="text/css" href="/public/js/codemirror/theme/oceanic-next.css">
@@ -31,25 +31,25 @@
   <script src="/public/js/codemirror/addon/dialog/dialog.js"></script>
   <script src="/public/js/codemirror/addon/search/searchcursor.js"></script>
   <script src="/public/js/codemirror/addon/search/search.js"></script>
-  <script src="/public/js/codemirror/addon/search/jump-to-line.js"></script>	
+  <script src="/public/js/codemirror/addon/search/jump-to-line.js"></script>
 
-        
-	<title>mandu code</title>		
+
+	<title>mandu code</title>
 	</head>
 <body>
-  		
+
 <script type="text/javascript" charset="utf-8">
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-var pop_menu = 
+var pop_menu =
 { view:"popup",	id:"popup_menu", head:"Submenu", width:150,body:
     {
         type:"space",
         rows:
         [
             {
-                view:"list", id:"list_menu", data:[ 
+                view:"list", id:"list_menu", data:[
                                             {id:"3", name:"open", location:"닫기"},
                                             {id:"1", name:"open", location:"새창열기"},
                                             {id:"2", name:"open", location:"열기"},
@@ -61,9 +61,9 @@ var pop_menu =
 };
 
 webix.ready(function()
-{  
+{
   webix.ui(pop_menu);
-  
+
   var main_view =
   {
     cols:
@@ -82,14 +82,14 @@ webix.ready(function()
                       {
                           view:"richselect", id:'combobox_1', value:'1', options:
                               [
-                                  { id:'1', value:"stock/" },
-                                  { id:'2', value:"web_service/" },
+                                  { id:'1', value:"stock/src/" },
+                                  { id:'2', value:"hc2/src/" },
                               ]
                       },
                       {width:100},
                       { view:"button", value:"가자", click:"read_list();", width:50, align:"center"},
                   ]
-          },          
+          },
 
           { view:"toolbar", id:"mybar1", elements:
             [
@@ -104,7 +104,7 @@ webix.ready(function()
   };
 
   webix.ui(main_view);
-  webix.Touch.limit(true); 
+  webix.Touch.limit(true);
 
   $$("text_search_code").attachEvent("onTimedKeyPress",function()
   {
@@ -113,10 +113,10 @@ webix.ready(function()
 
   var temp_id = '';
   $$('tree_1').attachEvent("onItemClick", function (id, e, node)
-  {    
+  {
     temp_id = id;
 
-    $$('popup_menu').show(node);  
+    $$('popup_menu').show(node);
   });
 
   $$("list_menu").attachEvent("onItemClick", function(id, e, node){
@@ -124,7 +124,7 @@ webix.ready(function()
       else if (id === '2'){read_code_this(temp_id)}
       else if (id === '3'){$$('popup_menu').hide()}
 
-  });  
+  });
 
   start_page();
 });
